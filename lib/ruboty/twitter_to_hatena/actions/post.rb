@@ -1,6 +1,3 @@
-require "edit_daily_tweets"
-require "post_to_hatena"
-
 module Ruboty
   module Twitter_To_Hatena
     module Actions
@@ -16,11 +13,11 @@ module Ruboty
           yesterday = (Date.today - 1).to_s
           date = message[:date] || yesterday
 
-          tweets = fetch_daily_tweets(date)
+          tweets = EditDailyTweets.fetch_daily_tweets(date)
           return "There aren't tweets." if tweets.empty?
 
-          body = edit_tweets_for_hatena(tweets)
-          if post_to_hatena("つぶやき at #{date}", body, "twitter")
+          body = EditDailyTweets.edit_tweets_for_hatena(tweets)
+          if PostToHatena.post_to_hatena("つぶやき at #{date}", body, "twitter")
             "Post tweets to hatena."
           else
             "Posting tweets to hatena fails."
