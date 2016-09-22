@@ -11,7 +11,11 @@ module Ruboty
         private
         def post
           yesterday = (Date.today - 1).to_s
-          date = message[:date] || yesterday
+          if message[:date] = ""
+            date = message[:date]
+          else
+            date = yesterday
+          end
 
           tweets = EditDailyTweets.fetch_daily_tweets(date)
           return "There aren't tweets." if tweets.empty?
