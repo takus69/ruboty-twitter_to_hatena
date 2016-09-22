@@ -11,7 +11,7 @@ module Ruboty
         private
         def post
           yesterday = (Date.today - 1).to_s
-          if message[:date].empty?
+          if message[:date].nil?
             date = yesterday
           else
             date = message[:date]
