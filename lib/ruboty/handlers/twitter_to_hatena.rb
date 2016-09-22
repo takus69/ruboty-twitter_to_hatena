@@ -4,7 +4,7 @@ module Ruboty
   module Handlers
     # Post tweets to hatena blog.
     class Twitter_To_Hatena < Base
-      on /post\z/, name: 'post', description: 'Post tweets to hatena blog.'
+      on /post (?<date>\d+)/, name: 'post', description: 'Post tweets to hatena blog.'
 
       def post(message)
         Ruboty::Twitter_To_Hatena::Actions::Post.new(message).call
