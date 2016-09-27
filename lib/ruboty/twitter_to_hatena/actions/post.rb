@@ -21,7 +21,7 @@ module Ruboty
           return "There aren't tweets." if tweets.empty?
 
           body = EditDailyTweets.edit_tweets_for_hatena(tweets)
-          if PostToHatena.post_to_hatena("つぶやき at #{date}", body, "twitter")
+          if PostToHatena.post_to_hatena("つぶやき on #{date}", body, "twitter")
             "Post tweets to hatena."
           else
             "Posting tweets to hatena fails."
