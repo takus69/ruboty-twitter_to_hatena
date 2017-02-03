@@ -1,5 +1,5 @@
 module Ruboty
   module TwitterToHatena
-    VERSION = "1.1.4"
+    VERSION = "1.2.4"
   end
 end

@@ -10,18 +10,7 @@ module Ruboty
 
         private
         def post
-          yesterday = (Date.today - 1).to_s
-          if message[:date].empty?
-            date = yesterday
-          else
-            date = message[:date]
-          end
-
-          tweets = EditTweets.fetch_daily_tweets(date)
-          return "There aren't tweets." if tweets.empty?
-
-          body = EditTweets.edit_tweets_for_hatena(tweets)
-          if PostToHatena.post_to_hatena("つぶやき on #{date}", body, "twitter")
+          if PostToHatena.post_tweets()
             "Post tweets to hatena."
           else
             "Posting tweets to hatena fails."
